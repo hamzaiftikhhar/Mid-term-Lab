@@ -9,13 +9,9 @@ import useAuth from "./hooks/UserHook";
 
 import HomeScreen from "./screens/HomeScreen";
 import StoreScreen from "./screens/StoreScreen";
-import RegisterScreen from "./screens/RegisterScreen";
 import LoginScreen from "./screens/LoginScreen";
 import ColorScheme from "./screens/ColorScheme";
 import ProfileScreen from "./screens/ProfileScreen";
-
-import ProfileDropdown from "./components/ProfileDropdown";
-
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
@@ -50,7 +46,6 @@ export default function App() {
             <Feather name={colorScheme === "light" ? "sun" : "moon"} size={24} color={colorScheme === "light" ? "black" : "white"} />
           </TouchableOpacity>
         </View>
-        {user ? (
           <Drawer.Navigator
             initialRouteName="Home"
             screenOptions={{
@@ -94,47 +89,6 @@ export default function App() {
             />
            
           </Drawer.Navigator>
-        ) : (
-          <Stack.Navigator
-            initialRouteName="login"
-            screenOptions={{
-              headerMode: "screen",
-              headerTintColor: colorScheme === "light" ? "white" : "black",
-              headerStyle: { backgroundColor: colorScheme === "light" ? "#227398" : "#000000" },
-            }}>
-            <Stack.Screen
-              name="Login"
-              component={LoginScreen}
-              options={{
-                title: "Log in",
-              }}
-            />
-            <Stack.Screen
-              name="Register"
-              component={RegisterScreen}
-              options={{
-                title: "Create an Account",
-                headerLeft: null,
-              }}
-            />
-            <Stack.Screen
-              name="ProfileScreen"
-              component={ProfileScreen}
-              options={{
-                title: "Create an Account",
-                headerLeft: null,
-              }}
-            />
-            <Stack.Screen
-              name="ColorScheme"
-              component={ColorScheme}
-              options={{
-                title: "Create an Account",
-                headerLeft: null,
-              }}
-            />
-          </Stack.Navigator>
-        )}
       </View>
     </NavigationContainer>
   );
